@@ -1,7 +1,10 @@
 class Juego {
-
-  Obstaculos[] obstaculo = new Obstaculos [3];
-  Fondo fondo;
+  int c=3;
+  int a=3;
+  Obstaculos tacho;
+  Obstaculos[] lata = new Obstaculos [c];
+  Obstaculos[] botella = new Obstaculos [a];
+  Escenario fondo;
   Jugador jugador;
   Enemigos enemigos;
   Juego() {
@@ -9,25 +12,33 @@ class Juego {
 
 
 
-    obstaculo [0] = new Obstaculos(250, -200);  
-    obstaculo [1] = new Obstaculos(350, -70);
-    obstaculo [2] = new Obstaculos(60, -50);
-
-    fondo= new Fondo(0, -500, 500, 2000);
+    tacho = new Obstaculos(random(width), -200);  
     jugador=new Jugador(250, 500);
     enemigos=new Enemigos(250, 800);
+    fondo= new Escenario(0, -500, 500, 2000);
+    for (int i=0; i<botella.length; i++) {
+      botella[i]= new Obstaculos(random(width), 10);
+    }
+    for (int e=0; e<lata.length; e++) {
+      lata[e]= new Obstaculos(random(width), 50);
+    }
   }
   void dibujarJuego () {
     fondo.dibujar();
 
 
-    obstaculo[0].dibujarTacho();   
-    obstaculo[1].dibujarBotella();
-    obstaculo[2].dibujarLata();
+    tacho.dibujarTacho();  
+    for (int i=0; i<botella.length; i++) {
+      botella[i].dibujarBotella();
+    }
+    for (int e=0; e<lata.length; e++) {
+      lata[e].dibujarLata();
+    }
+
 
     jugador.dibujar();
 
-   
+
     enemigos.dibujar();
   }
 
@@ -35,15 +46,28 @@ class Juego {
     fondo.actualizar();
     jugador.actualizar();
     enemigos.actualizar();
-    obstaculo[0].actualizar(); 
-    obstaculo[1].actualizar();
-    obstaculo[2].actualizar();
-enemigos.seguirJugador(jugador);
-    jugador.colision(obstaculo[1]);
-    jugador.colision(obstaculo[2]);
-    jugador.colisionTacho(obstaculo[0]);
+    tacho.actualizar(); 
+    for (int e=0; e<lata.length; e++) {
+      lata[e].actualizar();
+    }
+    for (int i=0; i<botella.length; i++) {
+      botella[i].actualizar();
+    }
+
+    enemigos.seguirJugador(jugador);
+    for (int i=0; i<botella.length; i++) {
+      jugador.colision(botella[i]);
+    }
+    for (int e=0; e<lata.length; e++) {
+      jugador.colision(lata[e]);
+    }
+
+    jugador.colisionTacho(tacho);
     jugador.colisionEnemigo(enemigos);
   }
-  void move(){ 
-  jugador.mover();}
+  void move() { 
+    jugador.mover();
+  }
+  void reiniciar(){}
+  
 }

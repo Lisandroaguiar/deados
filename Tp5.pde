@@ -9,5 +9,14 @@ void draw() {
   juego.actualizarJuego();
 
 }
-void keyPressed(){
- juego.move();}
+void keyPressed(){ //<>//
+ juego.move();
+ }
+ 
+ /*FALTA;
+-ESTADOS: INICIO, GANAR(SE LLENA LA BARRA), PERDER(TE AGARRA EL MALITO)
+-BOTON REINICIO
+-¿MULTIJUGADOR?
+-PREGUNTAR BARRA PREGUNTAR PREGUNTAR PREGUNTAR
+-REINICIAR
+ */

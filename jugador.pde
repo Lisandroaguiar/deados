@@ -3,40 +3,38 @@ class Jugador {
   float posX, posY;
   float tamano;
   float velocidad;
-  //int numFrames = ??? ;
-  //PImage [] jugador = new PImage [numFrames];
+  int numFrames = 6;
+  PImage [] jugador = new PImage [numFrames];
   //CONSTRUCTOR “setup” de mi clase
   Jugador(float posX_, float posY_) {
     posX=posX_;
     posY=posY_;
     tamano =100;
     velocidad =1.75;
-    /*for (int i = 0;i < numFrames; i++) {
-     jugador[i] = loadImage("NOMBREARCHIVO”+ i + ".png");
-     }*/
+    for (int i = 0; i < numFrames; i++) {
+      jugador[i] = loadImage("jugador"+ nf(i, 2)+ ".png");
+    }
   }
   //MÉTODOS (funciones)
   void dibujar() {
-    //image(this.jugador[frameCount%numFrames], this.posX, this.posY);
-    circle(posX, posY, tamano);
+    image(this.jugador[frameCount%numFrames], this.posX, this.posY);
   }
   void actualizar() {
     posY-=velocidad;
     if ( this.posY<0) {
       this.posY=501;
     }
-    if ( this.posX>450) {
-      this.posX=450;
-    }
-    if ( this.posX<50) {
+    if ( this.posX>400) {
+      this.posX=400;
+    } else if ( this.posX<50) {
       this.posX=50;
     }
   }
   void mover() {
-    if (keyPressed==true && key=='d') {
+    if (keyPressed && key=='d' || keyPressed && keyCode==RIGHT ) {
       posX +=10;
     }
-    if (keyPressed==true && key=='a') {
+    if (keyPressed && key=='a' || keyPressed && keyCode==LEFT ) {
       posX -=10;
     }
   }
@@ -73,5 +71,10 @@ class Jugador {
       println("perdiste");
     }
   }
-  float getY(){return this.posY;}
+  float getY() {
+    return this.posY;
+  }
+  float getX() {
+    return this.posX;
+  }
 }
