@@ -22,7 +22,7 @@ class Escenario {
     image(this.fondo, this.posX, this.posY);
     fondo.resize(tamanoX, tamanoY);
     m=millis();
-    float a=map(m, 0, 400, 0, 10); //1500 total, 5 velocidad ¿se divide? ¿porcentaje?. ¿COMO FUNCIONA? a y m no estan unidos, a solo es la version mapeada
+    float a=map(m, 0, 1500, 0, 10); //1500 total, 5 velocidad ¿se divide? ¿porcentaje?. ¿COMO FUNCIONA? a y m no estan unidos, a solo es la version mapeada
     //a=Largo de la barra ¿como calculo el tiempo de nivel?
     rect(100, 10, a, 10);
     if (a>=300) { 
