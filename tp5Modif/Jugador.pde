@@ -4,8 +4,9 @@ class Jugador {
   float tam;
   float velocidad;
   int numFrames = 6;
+  String estado;
   PImage [] jugador = new PImage [numFrames];
-    String estado;
+
   //CONSTRUCTOR ("setup" de mi programa)
   Jugador(float posX_, float posY_) {
     posX = posX_;
@@ -17,7 +18,20 @@ class Jugador {
     }
   }
   //METODOS (funciones)
+  void dibujar() {
+    image(this.jugador[frameCount%numFrames], this.posX, this.posY);
+  }
 
+  void terminarJuego() {
+    if (estado=="cuatro") {
+      background(0);
+      pushStyle();
+      textAlign(CENTER);
+      fill(255);
+      text("Te alcanzó\n PERDISTE", width/2, height/2);
+      popStyle();
+    }
+  }
   void actualizar() {
     posY -= velocidad;
     if (this.posY < 0) {
@@ -28,9 +42,6 @@ class Jugador {
     } else if (this.posX < 50) {
       this.posX = 50;
     }
-  }
-  void dibujar() {
-    image(this.jugador[frameCount%numFrames], this.posX, this.posY);
   }
 
   void mover() {
@@ -69,16 +80,11 @@ class Jugador {
     float dColision = dist(xEnemigo, yEnemigo, posX, posY);
     if (dColision < tam/2) {
       velocidad -= 0.25;
+      estado="cuatro";
       println("colisionEnemigo - Perdiste");
     }
   }
-    void terminarJuego() {
-    if (estado=="cuatro") {
-      background(0);
-      fill(255);
-      text("te agarro", 250, 250);
-    }
-  }
+
   float getY() {
     return this.posY;
   }

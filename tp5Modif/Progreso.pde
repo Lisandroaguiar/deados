@@ -9,15 +9,22 @@ class Progreso {
   Progreso() {
     estado="uno";
   }
-
   void dibujarBarra() {
 
     //logica de estados ---ESTADO 1
     if ( estado.equals("uno") ) {
       println("uno");
-      //   background(0,0,0,1);
+      pushStyle();
+      textAlign(CENTER);
+      noStroke();
+      fill(0, 200);
+      rect(0, height/4*3, width, height);
       fill(255);
-      text("PRESIONAR LA BARRA PARA INICIAR", 250, 250);
+      text("INSTRUCCIONES:", width/2, height/6*5);
+      text("Corre de derecha a izquierda y evita los obstáculos para escapar.\n Presiona: 'a' o '←' para ir a la izquierda y 'd' o '→' para ir a la derecha.", width/2, height/7*6+5);
+      fill(255, 0, 0);
+      text("PRESIONA LA BARRA ESPACIADORA PARA JUGAR", width/2, height-30);
+      popStyle();
     }
     //logica de estados
 
@@ -29,19 +36,17 @@ class Progreso {
       fill( 255, 0, 0 );
       rect( 50, 0, t, 10 );
       println("2");
-    } else if ( estado.equals("tres") ) {
-      println("3");
     }
-
-    if ( estado.equals("tres") ) { //aca se carga el 3
-      println("tres");
+    if (estado.equals("tres") ) { //aca se carga el 3
+      println("3");
       background(0);
+      pushStyle();
+      textAlign(CENTER);
       fill(255);
-      text("fin", 250, 250);
+      text("Lograste escapar\n GANASTE", width/2, height/2);
+      popStyle();
     }
   }
-
-
 
   String getEstado() { 
     return estado;
@@ -55,4 +60,6 @@ class Progreso {
       estado = "1";
     }
   }
+    
+
 }
