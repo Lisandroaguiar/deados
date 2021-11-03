@@ -1,28 +1,80 @@
-cositas[] botella = new cositas [24];
-Fondo fondo;
-Jugador jugador;
-enemigos enemigos;
-float r=random(250, 450);
-void setup(){size(500,500);
+class Juego {
+  int c=3;
+  int a=3;
+  Obstaculos tacho;
+  Obstaculos[] lata = new Obstaculos [c];
+  Obstaculos[] botella = new Obstaculos [a];
+  Escenario fondo;
+  Jugador jugador;
+  Enemigos enemigos;
+  Progreso progreso;
+  //constructor
+  Juego() {
+    size(500, 500);
 
 
- for ( int i = 0; i<24; i++ ) {
+    progreso=new Progreso();
+    tacho = new Obstaculos(random(width), -200);  
+    jugador=new Jugador(250, 500);
+    enemigos=new Enemigos(250, 800);
+    fondo= new Escenario(0, -500, 500, 2000);
+    for (int i=0; i<botella.length; i++) {
+      botella[i]= new Obstaculos(random(width), 10);
+    }
+    for (int e=0; e<lata.length; e++) {
+      lata[e]= new Obstaculos(random(width), 50);
+    }
+  }
+  void dibujarJuego () { 
+ 
+    fondo.dibujar();
+    
+
+    tacho.dibujarTacho();  
+    for (int i=0; i<botella.length; i++) {
+      botella[i].dibujarBotella();
+    }
+    for (int e=0; e<lata.length; e++) {
+      lata[e].dibujarLata();
+    }
+
+
+    jugador.dibujar();
+
+
+    enemigos.dibujar();
+   progreso.dibujarBarra();
+  
+  }
    
-botella [i] = new cositas(r,10,12);}
-fondo= new Fondo(0,-500,500,2000);
-jugador=new Jugador(250,500);
-enemigos=new enemigos(250, 600);
-}
-void draw(){ background(0);
- for ( int i = 0; i<24; i++ ) {
-fondo.dibujar();
-   fondo.actualizar();
-botella[i].dibujarBotella();
+  void actualizarJuego() {String getE=progreso.getEstado(); if(getE=="dos"){ println(getE);
+    fondo.actualizar();
+    jugador.actualizar();
+    enemigos.actualizar();
+    tacho.actualizar(); 
+    for (int e=0; e<lata.length; e++) {
+      lata[e].actualizar();
+    }
+    for (int i=0; i<botella.length; i++) {
+      botella[i].actualizar();
+    }
 
-botella[i].actualizar();
-jugador.dibujar();
-jugador.actualizar();
-jugador.mover();}
-enemigos.dibujar();
-enemigos.actualizar();
+    enemigos.seguirJugador(jugador);
+    for (int i=0; i<botella.length; i++) {
+      jugador.colision(botella[i]);
+    }
+    for (int e=0; e<lata.length; e++) {
+      jugador.colision(lata[e]);
+    }
+
+    jugador.colisionTacho(tacho);
+    jugador.colisionEnemigo(enemigos);
+  }}
+  void move() { 
+    jugador.mover();
+progreso.arrancarJuego();  
+}
+  
+  void reiniciar() {
+  }
 }
