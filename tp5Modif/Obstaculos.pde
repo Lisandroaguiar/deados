@@ -22,13 +22,13 @@ class Obstaculos {
   }
 
   //METODOS (funciones)
-  void actualizarObstaculos() {
+  void actualizar() {
     posY += velocidad;
-    if (this.posY >= 500) {
+    if (this.posY >= height) {
       this.posY = 10;
     } else if ( this.posX>400) {
       this.posX=400;
-    } else  if ( this.posX<50) {
+    } else  if ( this.posX<width/10) {
       this.posX=50;
     }
   }
@@ -43,12 +43,12 @@ class Obstaculos {
   }
 
   void reciclar() {
-    this.posX = random(50, 350);
+    this.posX = random(width/10, 350);
     this.posY = 10;
   }
   void reciclarTacho() {
     this.posX = 300;
-    this.posY = -200; ///////////////////////Se podría mejorar?
+    this.posY = -200;
   }
   float getX() {
     return this.posX;

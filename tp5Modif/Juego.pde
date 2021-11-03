@@ -8,6 +8,7 @@ class Juego {
   Escenario fondo;
   Jugador jugador;
   Enemigo enemigo;
+  Progreso progreso;
   //CONSTRUCTOR ("setup" de mi programa)
   Juego() {
     for (int i = 0; i < lata.length; i++) {
@@ -16,15 +17,16 @@ class Juego {
     for (int a = 0; a < botella.length; a++) {
       botella[a] = new Obstaculos(random(width), 10);
     }
-    this.tacho = new Obstaculos(random(width), -200);
-    this.jugador = new Jugador(width/2, height);
-    this.enemigo = new Enemigo (width/2, height+300);
-    this.fondo = new Escenario(0, -500, width, height*2);
+    progreso=new Progreso();
+    tacho = new Obstaculos(random(width), -200);
+    jugador = new Jugador(width/2, height);
+    enemigo = new Enemigo (width/2, height+300);
+    fondo = new Escenario(0, -500, width, height*2);
   }
   //METODOS (funciones)
   void dibujarJuego() {
     //Escenario
-    fondo.dibujarEscenario();
+    fondo.dibujar();
     //Obstaculos
     tacho.dibujarTacho();
     for (int i = 0; i < botella.length; i++) {
@@ -34,19 +36,22 @@ class Juego {
       lata[a].dibujarLata();
     }
     // Jugador y enemigo
-    jugador.dibujarJugador();
-    enemigo.dibujarEnemigo();
+    jugador.dibujar();
+    enemigo.dibujar();
+    //Barra
+    progreso.dibujarBarra();
   }
-  void actualizarJuego() {
-    fondo.actualizarEscenario(); 
-    jugador.actualizarJugador();
-    enemigo.actualizarEnemigo();
-    tacho.actualizarObstaculos();
+  void actualizar() {
+    fondo.actualizar(); 
+    jugador.actualizar();
+    enemigo.actualizar();
+    tacho.actualizar();
+
     for (int i=0; i<botella.length; i++) {
-      botella[i].actualizarObstaculos();
+      botella[i].actualizar();
     }
     for (int a=0; a<lata.length; a++) {
-      lata[a].actualizarObstaculos();
+      lata[a].actualizar();
     }
 
     enemigo.seguirJugador(jugador);
@@ -60,8 +65,36 @@ class Juego {
     jugador.colisionTacho(tacho);
     jugador.colisionEnemigo(enemigo);
   }
-  void move() { 
-    jugador.moverJugador();
+  void actualizarJuego() {
+    String getE=progreso.getEstado(); 
+    if (getE=="dos") { 
+      println(getE);
+      fondo.actualizar();
+      jugador.actualizar();
+      enemigo.actualizar();
+      tacho.actualizar(); 
+      for (int e=0; e<lata.length; e++) {
+        lata[e].actualizar();
+      }
+      for (int i=0; i<botella.length; i++) {
+        botella[i].actualizar();
+      }
+
+      enemigo.seguirJugador(jugador);
+      for (int i=0; i<botella.length; i++) {
+        jugador.colisionObstaculosMov(botella[i]);
+      }
+      for (int e=0; e<lata.length; e++) {
+        jugador.colisionObstaculosMov(lata[e]);
+      }
+
+      jugador.colisionTacho(tacho);
+      jugador.colisionEnemigo(enemigo);
+    }
+  }
+  void mover() { 
+    jugador.mover();
+    progreso.arrancarJuego();
   }
   void reiniciar() {
   }

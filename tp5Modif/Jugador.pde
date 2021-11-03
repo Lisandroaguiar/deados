@@ -5,7 +5,7 @@ class Jugador {
   float velocidad;
   int numFrames = 6;
   PImage [] jugador = new PImage [numFrames];
-  ///////////////////////////////////////////Agregar choclo de arreglo cuando estén los sprites
+    String estado;
   //CONSTRUCTOR ("setup" de mi programa)
   Jugador(float posX_, float posY_) {
     posX = posX_;
@@ -18,7 +18,7 @@ class Jugador {
   }
   //METODOS (funciones)
 
-  void actualizarJugador() {
+  void actualizar() {
     posY -= velocidad;
     if (this.posY < 0) {
       this.posY =501;
@@ -29,16 +29,16 @@ class Jugador {
       this.posX = 50;
     }
   }
-  void dibujarJugador() {
+  void dibujar() {
     image(this.jugador[frameCount%numFrames], this.posX, this.posY);
   }
 
-  void moverJugador() {
+  void mover() {
     if ( keyPressed && key == 'd' || keyPressed && keyCode == RIGHT) {
-      posX++;
+      posX += 10;
     }
     if ( keyPressed && key == 'a' || keyPressed && keyCode == LEFT) {
-      posX--;
+      posX -= 10;
     }
   }
   void colisionObstaculosMov(Obstaculos obstaculo) {
@@ -70,6 +70,13 @@ class Jugador {
     if (dColision < tam/2) {
       velocidad -= 0.25;
       println("colisionEnemigo - Perdiste");
+    }
+  }
+    void terminarJuego() {
+    if (estado=="cuatro") {
+      background(0);
+      fill(255);
+      text("te agarro", 250, 250);
     }
   }
   float getY() {

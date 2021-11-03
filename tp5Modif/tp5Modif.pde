@@ -8,5 +8,5 @@ void draw() {
   juego.actualizarJuego();
 }
 void keyPressed() {
-  juego.move();
+  juego.mover();
 }

@@ -17,18 +17,18 @@ class Enemigo {
   }
 
   //METODOS (funciones)
-  void dibujarEnemigo() {
+  void dibujar() {
     image(this.enemigo[frameCount%numFrames], this.posX, this.posY);
   }
 
-  void actualizarEnemigo() {
+  void actualizar() {
     this.posY -= this.velocidad;
 
     if (this.posX> 400) {
       this.posX = 400;
     } else if (this.posX < 50) {
       this.posX = 50;
-    } ////////////////////////////ACA SE REPETIAN DOS VECES LAS CONDICIONES CON MINIMA DIFERENCIA DE VALORES
+    } 
   }
   void seguirJugador(Jugador jugador) {
     float yJ = jugador.getY();
