@@ -4,7 +4,6 @@ class Jugador {
   float hitBox=100;
   float velocidad;
   int numFrames = 6;
-  String estado;
   PImage [] jugador = new PImage [numFrames];
 
   //CONSTRUCTOR ("setup" de mi programa)
@@ -47,7 +46,7 @@ class Jugador {
     float yObstaculo= obstaculo.getY();
 
     float dColision= dist(xObstaculo, yObstaculo, posX, posY);
-    if (dColision<hitBox/2) { 
+    if (dColision<hitBox/5) { 
       velocidad-=0.25; 
       println("colisionObstaculosMoviles");
       obstaculo.reciclar();
@@ -58,7 +57,7 @@ class Jugador {
     float yObstaculo= obstaculo.getY();
 
     float dColision= dist(xObstaculo, yObstaculo, posX, posY);
-    if (dColision<hitBox/1.85) { 
+    if (dColision<hitBox/4) { 
       velocidad-=0.25; 
       println("colisionTacho");
       obstaculo.reciclarTacho();
@@ -69,9 +68,7 @@ class Jugador {
     float yEnemigo = enemigo.getY();
     float dColision = dist(xEnemigo, yEnemigo, posX, posY);
     if (dColision < hitBox/2) {
-     
       progreso.perdiste();
-      estado="cuatro";
       println("colisionEnemigo - Perdiste");
     }
   }

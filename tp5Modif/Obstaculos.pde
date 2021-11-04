@@ -56,5 +56,4 @@ class Obstaculos {
   float getY() {
     return this.posY;
   }
-
 }

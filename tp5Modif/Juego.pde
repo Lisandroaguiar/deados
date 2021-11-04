@@ -13,15 +13,15 @@ class Juego {
   //CONSTRUCTOR ("setup" de mi programa)
   Juego() {
     progreso=new Progreso();
-    tacho = new Obstaculos(random(width),-200);
+    tacho = new Obstaculos(random(width), -200);
     jugador = new Jugador();
     enemigo = new Enemigo ();
     fondo = new Escenario(0, -500, width, height*2);
     for (int i = 0; i < lata.length; i++) {
-      lata[i]= new Obstaculos(random(width),10);
+      lata[i]= new Obstaculos(random(width), 10);
     }
     for (int a = 0; a < botella.length; a++) {
-      botella[a] = new Obstaculos(random(width),50);
+      botella[a] = new Obstaculos(random(width), 50);
     }
   }
   //METODOS (funciones)
@@ -43,7 +43,6 @@ class Juego {
     enemigo.dibujar();
     //Barra
     progreso.dibujarBarra();
-   
   }
   void actualizarJuego() {
     String getE=progreso.getEstado(); 
@@ -77,13 +76,11 @@ class Juego {
     progreso.arrancarJuego();
   }
   void reiniciar() { 
-    if (keyPressed && key=='r') {
-
+    String getE=progreso.getEstado(); 
+    if (keyPressed && key=='r' && getE != "dos") {
       jugador.reiniciarJugador();
       enemigo.reiniciarEnemigo();
-    
-      progreso.reiniciarEstado();}
-    
-    
+      progreso.reiniciarEstado();
+    }
   }
 }

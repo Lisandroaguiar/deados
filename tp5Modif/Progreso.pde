@@ -43,10 +43,11 @@ class Progreso {
       pushStyle();
       textAlign(CENTER);
       fill(255);
-      text("Lograste escapar\n GANASTE", width/2, height/2);
+      text("Lograste escapar\n ¡GANASTE!", width/2, height/2);
+      text("Apreta 'r' para reiniciar", width/2, 350); //Opción a reiniciar temporal
       popStyle();
     }
-     if (estado=="cuatro") {
+    if (estado=="cuatro") {
       background(0);
       pushStyle();
       textAlign(CENTER);
@@ -61,20 +62,18 @@ class Progreso {
     return estado;
   }
   void arrancarJuego() {
-    if (key==' ') {
+    if (key==' ' && estado == "uno") {
       estado = "dos";
       marcaDeTiempo = millis();
     }
-   
   }
-  
-  void reiniciarEstado(){
- 
+
+  void reiniciarEstado() {
+    if ( estado == "tres" || estado == "cuatro") {
       estado = "uno";
-    
-  
+    }
   }
-  void perdiste(){
-  estado="cuatro";
+  void perdiste() {
+    estado="cuatro";
   }
 }
