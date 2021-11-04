@@ -7,9 +7,9 @@ class Enemigo {
   PImage [] enemigo = new PImage [numFrames];
 
   //CONSTRUCTOR ("setup" de mi programa)
-  Enemigo(float posX_, float posY_) {
-    posX = posX_;
-    posY = posY_;
+  Enemigo() {
+    posX = width/2;
+    posY =height+300;
     velocidad = 1;
     for (int i = 0; i < numFrames; i++) {
       enemigo[i] = loadImage("enemigo"+ nf(i, 2) + ".png");
@@ -28,7 +28,7 @@ class Enemigo {
       this.posX = 400;
     } else if (this.posX < 50) {
       this.posX = 50;
-    } 
+    }
   }
   void seguirJugador(Jugador jugador) {
     float yJ = jugador.getY();
@@ -43,5 +43,9 @@ class Enemigo {
   }
   float getY() {
     return this.posY;
+  }
+  void reiniciarEnemigo() {
+    posX=width/2;
+    posY=height+300;
   }
 }

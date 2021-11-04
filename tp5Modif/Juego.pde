@@ -13,20 +13,20 @@ class Juego {
   //CONSTRUCTOR ("setup" de mi programa)
   Juego() {
     progreso=new Progreso();
-    tacho = new Obstaculos(random(width), -200);
-    jugador = new Jugador(width/2, height);
-    enemigo = new Enemigo (width/2, height+300);
+    tacho = new Obstaculos(random(width),-200);
+    jugador = new Jugador();
+    enemigo = new Enemigo ();
     fondo = new Escenario(0, -500, width, height*2);
     for (int i = 0; i < lata.length; i++) {
-      lata[i]= new Obstaculos(random(width), 10);
+      lata[i]= new Obstaculos(random(width),10);
     }
     for (int a = 0; a < botella.length; a++) {
-      botella[a] = new Obstaculos(random(width), 10);
+      botella[a] = new Obstaculos(random(width),50);
     }
   }
   //METODOS (funciones)
 
-  void dibujarJuego() {
+  void dibujarJuego() { 
     //Escenario
     fondo.dibujar();
     //Obstaculos
@@ -43,7 +43,7 @@ class Juego {
     enemigo.dibujar();
     //Barra
     progreso.dibujarBarra();
-    jugador.terminarJuego();
+   
   }
   void actualizarJuego() {
     String getE=progreso.getEstado(); 
@@ -69,12 +69,21 @@ class Juego {
         jugador.colisionObstaculosMov(lata[a]);
       }
       jugador.colisionTacho(tacho);
-      jugador.colisionEnemigo(enemigo);
+      jugador.colisionEnemigo(enemigo, progreso);
     }
   }
   void mover() { 
     jugador.mover();
     progreso.arrancarJuego();
   }
+  void reiniciar() { 
+    if (keyPressed && key=='r') {
 
+      jugador.reiniciarJugador();
+      enemigo.reiniciarEnemigo();
+    
+      progreso.reiniciarEstado();}
+    
+    
+  }
 }

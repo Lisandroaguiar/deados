@@ -17,7 +17,7 @@ class Obstaculos {
     }
     tacho = loadImage("tacho.png");
     posX = posX_;
-    posY = posY_;
+    posY =posY_;
     velocidad = 1;
   }
 
@@ -38,8 +38,8 @@ class Obstaculos {
   void dibujarBotella() {
     image(this.botella[frameCount%13], this.posX, this.posY);
   }
-  void dibujarTacho(){
-   image(this.tacho, this.posX, this.posY);    
+  void dibujarTacho() {
+    image(this.tacho, this.posX, this.posY);
   }
 
   void reciclar() {
@@ -56,4 +56,5 @@ class Obstaculos {
   float getY() {
     return this.posY;
   }
+
 }

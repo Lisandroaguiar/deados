@@ -46,6 +46,15 @@ class Progreso {
       text("Lograste escapar\n GANASTE", width/2, height/2);
       popStyle();
     }
+     if (estado=="cuatro") {
+      background(0);
+      pushStyle();
+      textAlign(CENTER);
+      fill(255);
+      text("Te alcanzó\n PERDISTE", width/2, height/2);
+      text("Apreta 'r' para reiniciar", width/2, 350);
+      popStyle();
+    }
   }
 
   String getEstado() { 
@@ -56,10 +65,16 @@ class Progreso {
       estado = "dos";
       marcaDeTiempo = millis();
     }
-    if (key=='r') {
-      estado = "1";
-    }
+   
   }
+  
+  void reiniciarEstado(){
+ 
+      estado = "uno";
     
-
+  
+  }
+  void perdiste(){
+  estado="cuatro";
+  }
 }

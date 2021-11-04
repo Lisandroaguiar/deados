@@ -1,17 +1,16 @@
 class Jugador {
   // CAMPOS (variables)
   float posX, posY;
-  float tam;
+  float hitBox=100;
   float velocidad;
   int numFrames = 6;
   String estado;
   PImage [] jugador = new PImage [numFrames];
 
   //CONSTRUCTOR ("setup" de mi programa)
-  Jugador(float posX_, float posY_) {
-    posX = posX_;
-    posY = posY_;
-    tam = 100;
+  Jugador() {
+    posX = width/2;
+    posY = height;
     velocidad = 1.75;
     for (int i = 0; i < numFrames; i++) {
       jugador[i] = loadImage("jugador"+ nf(i, 2)+ ".png");
@@ -22,16 +21,7 @@ class Jugador {
     image(this.jugador[frameCount%numFrames], this.posX, this.posY);
   }
 
-  void terminarJuego() {
-    if (estado=="cuatro") {
-      background(0);
-      pushStyle();
-      textAlign(CENTER);
-      fill(255);
-      text("Te alcanzó\n PERDISTE", width/2, height/2);
-      popStyle();
-    }
-  }
+
   void actualizar() {
     posY -= velocidad;
     if (this.posY < 0) {
@@ -57,7 +47,7 @@ class Jugador {
     float yObstaculo= obstaculo.getY();
 
     float dColision= dist(xObstaculo, yObstaculo, posX, posY);
-    if (dColision<tam/2) { 
+    if (dColision<hitBox/2) { 
       velocidad-=0.25; 
       println("colisionObstaculosMoviles");
       obstaculo.reciclar();
@@ -68,18 +58,19 @@ class Jugador {
     float yObstaculo= obstaculo.getY();
 
     float dColision= dist(xObstaculo, yObstaculo, posX, posY);
-    if (dColision<tam/1.85) { 
+    if (dColision<hitBox/1.85) { 
       velocidad-=0.25; 
       println("colisionTacho");
       obstaculo.reciclarTacho();
     }
   }
-  void colisionEnemigo(Enemigo enemigo) {
+  void colisionEnemigo(Enemigo enemigo, Progreso progreso) {
     float xEnemigo = enemigo.getX();
     float yEnemigo = enemigo.getY();
     float dColision = dist(xEnemigo, yEnemigo, posX, posY);
-    if (dColision < tam/2) {
-      velocidad -= 0.25;
+    if (dColision < hitBox/2) {
+     
+      progreso.perdiste();
       estado="cuatro";
       println("colisionEnemigo - Perdiste");
     }
@@ -90,5 +81,10 @@ class Jugador {
   }
   float getX() {
     return this.posX;
+  }
+  void reiniciarJugador() {
+    velocidad=1.75;
+    posX=width/2;
+    posY=height;
   }
 }

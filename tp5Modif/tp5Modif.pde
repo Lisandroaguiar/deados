@@ -9,4 +9,5 @@ void draw() {
 }
 void keyPressed() {
   juego.mover();
+  juego.reiniciar();
 }
