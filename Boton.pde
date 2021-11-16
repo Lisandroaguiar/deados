@@ -35,7 +35,7 @@ class Boton {
     rect(100, 100, 300, 50, 45);    
     fill(255, 0, 0);
     textFont(miFuenteTemporal);
-    text("Inicio", posX, posY);
+    text("Inicio", 100,100);
     popStyle();
   }
   void botonCustom(String textoB) {
@@ -56,7 +56,7 @@ class Boton {
     rect(150, 450, 200, 25, 45);
     fill(255, 0, 0);
     textFont(miFuenteTemporal);
-    text(textoB, posX, posY);
+    text(textoB, 150, 450);
     popStyle();
   }
   void botonContinuar(float posX, float posY, float tamX, float tamY) {  
