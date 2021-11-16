@@ -1,10 +1,12 @@
 //BORRAR C=0
-Juego juego;
+
 class Pantalla {
   Boton boton;
+  Juego juego;
   //VARIABLES (propiedades)
   float m;
   float posX, posY;
+  float mov;
   int tamX, tamY;
   int numFotos = 18;
   String estado="inicio";
@@ -18,13 +20,12 @@ class Pantalla {
     tamX = 300; ///////////////////////Ver!
     tamY = 300;
     m=millis();
+    mov=0;
     for (int i = 0; i < fotos.length; i++) {
       fotos[i] = loadImage("fondos/foto"+ nf(i, 2) + ".jpg");
     }
   }  
   //METODOS (funciones)
-
-
 
   ////////////////Consultar tamaño primera imagen(no es 300,300 , es width y height)
   void dibujar() {
@@ -35,126 +36,126 @@ class Pantalla {
       fotos[16].resize(tamX, tamY);
       tamX=width;
       tamY=height;
-      boton.botonInicio(100, 10, 100, 100);
+      boton.botonInicio();
+      boton.botonCreditos(100, 200, 300, 50);
       println(estado);
     }
 
     if ( estado=="boliche" ) {
-      image(fotos[0], 100, 40);
-      fotos[0].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[0], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
       println(estado);
     }
 
     if ( estado=="sustancia" ) {
-      image(fotos[1], 100, 40);
-      fotos[1].resize(300, 300);
-      boton.botonDoble(150, 150, 300, 300, 100, 100);
+      image(fotos[1], 100, 40, 300, 300);
+      boton.botonDoble("Tomar", "No tomar", 260, 450, 40, 450, 200, 25);
       println(estado);
     } 
-    if (estado=="ganaste") { 
-      image(fotos[17], 100, 40);
-      fotos[17].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
-      println(estado);
-    }   
-    if ( estado=="ambulancia" ) {
-      image(fotos[2], 100, 40);
 
-      fotos[2].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+    if ( estado=="ambulancia" ) {
+      image(fotos[2], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
       println(estado);
     }  
     if (estado=="ambulancia2") {
-      image(fotos[3], 100, 40);
-      fotos[3].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[3], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
+      println(estado);
+    }  
+    if (estado=="ganaste") { 
+      image(fotos[17], 100, 40, 300, 300);
+      boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25);
       println(estado);
     }  
     if ( estado=="creditos" ) {
-      image(fotos[16], 100, 40);
-      fotos[16].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[16], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
       println(estado);
     }  
     if ( estado=="perdiste" ) {
-      image(fotos[15], 100, 40);
-      ;
-      fotos[15].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[15], 100, 40, 300, 300);
+      boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25);
+
       println(estado);
     }  
     if ( estado=="caminar" ) {
-      image(fotos[13], 100, 40);
-      fotos[13].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[13], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
       println(estado);
     }  
     if ( estado=="grupotaxi" ) {
-      image(fotos[4], 100, 40);
-      fotos[4].resize(300, 300);
-      boton.botonDoble(150, 150, 300, 300, 100, 100);
+      image(fotos[4], 100, 40, 300, 300);
+      boton.botonDoble("Parar el taxi", "Encarar el grupo", 260, 450, 40, 450, 200, 25);
       println(estado);
     }   
     if ( estado=="grupo" ) {
-      image(fotos[5], 100, 40);
-      fotos[5].resize(300, 300);
-      boton.botonDoble(150, 150, 300, 300, 100, 100);
+      image(fotos[5], 100, 40, 300, 300);
+      boton.botonDoble("Seguir", "Cruzar", 260, 450, 40, 450, 200, 25);
       println(estado);
     }  
     if ( estado=="taxi" ) {
-      image(fotos[6], 100, 40);
-      ;
+      image(fotos[6], 100, 40, 300, 300);
       println(estado);
-      fotos[6].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+
+      boton.botonCustom("Pagadios");
     }    
     if ( estado=="preso" ) {
-      image(fotos[7], 100, 40);
-      fotos[7].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[7], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
     }    
     if ( estado=="preso2" ) {
-      image(fotos[8], 100, 40);
-      fotos[8].resize(300, 300);
+      image(fotos[8], 100, 40, 300, 300);
       println(estado);
-      boton.botonContinuar(250, 250, 100, 100);
+      boton.botonContinuar(150, 450, 200, 25);
     }  
     if ( estado=="correr" ) {
-      image(fotos[10], 100, 40);
+      image(fotos[10], 100, 40, 300, 300);
       println(estado);
-      fotos[10].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      boton.botonContinuar(150, 450, 200, 25);
     }  
     if (estado=="robado") {
-      image(fotos[11], 100, 40);
-      fotos[11].resize(300, 300);
+      image(fotos[11], 100, 40, 300, 300);
       println(estado);
-      boton.botonContinuar(250, 250, 100, 100);
+      boton.botonContinuar(150, 450, 200, 25);
     }   
-    if ( estado=="derechaIzquierda" ) {
+    if ( estado=="minijuego" ) {
       juego.dibujarJuego(); 
       juego.actualizarJuego();
       juego.mover();
       juego.reiniciar();
     }    
     if (estado=="callejon") {
-      image(fotos[12], 100, 40);
-      fotos[12].resize(300, 300);
-      boton.botonContinuar(250, 250, 100, 100);
+      image(fotos[12], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25);
       println(estado);
     }  
     if (estado=="amigos") {
-      image(fotos[14], 100, 40);
-      fotos[14].resize(300, 300);
+      image(fotos[14], 100, 40, 300, 300);
       println(estado);
-
-      boton.botonContinuar(250, 250, 100, 100);
+      boton.botonContinuar(150, 450, 200, 25);
     }
+    if ( estado=="creditos" ) {
+      background(200);
+
+      text("Guion:Lisandro Aguiar", 250, 500-mov);
+      text("Montaje:Lisandro Aguiar", 250, 600-mov);
+      text("Imagenes:Lisandro Aguiar", 250, 700-mov);
+      text("Programacion:Lisandro Aguiar", 250, 800-mov);
+      text("Programacion:Tatiana Segundo", 250, 900-mov);
+      text("Patente pendiente", 250, 1100-mov);
+      mov+=5;
+      if (m>500) {
+        boton.botonInicio();
+      }
+    }
+    println("m: ", m);
   }
+
   void actualizar() {
 
     m++;
+
     boolean A=boton.getA();
     int C=boton.getC();
 
@@ -213,11 +214,11 @@ class Pantalla {
       A=false;
       estado="grupotaxi";
     }  
-    if ( estado=="grupotaxi" && C==1 && m>10) {
+    if ( estado=="grupotaxi" && C==-1 && m>10) {
       m=0; 
       estado="grupo";
     }
-    if ( estado=="grupotaxi" && C==-1 && m>10) {
+    if ( estado=="grupotaxi" && C==1 && m>10) {
       m=0; 
       estado="taxi";
     }
@@ -247,14 +248,14 @@ class Pantalla {
     if ( estado=="correr" && A==true && m>10) { 
       m=0; 
       A=false;
-      estado="derechaIzquierda";
+      estado="minijuego";
     }  
     if (estado=="robado"&& A==true && m>10) { 
       m=0; 
       A=false;
       estado="perdiste";
     }   
-    if ( estado=="derechaIzquierda" && C==1 && m>10) {
+    if ( estado=="minijuego" && C==1 && m>10) {
       m=0; 
       estado="callejon";
     }    
