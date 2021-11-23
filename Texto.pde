@@ -3,26 +3,23 @@ class Texto {
   float posX, posY;
   float tam;
   PFont miFuente;
-  String [] textos;
-  //CONSTRUCTOR ("setup" de mi clase)
-  Texto(float posX_, 
-    float posY_, 
-    float tam_) {
-    posX = posX_;
-    posY = posY_;
-    tam = tam_;
 
-    miFuente=loadFont("miFuente.vlw");
-    textos = loadStrings("textosAventura.txt");
+  //CONSTRUCTOR ("setup" de mi clase)
+  Texto() {
+
+    miFuente=loadFont("miFuente.vlw");//Mati, no nos anda la tipografia :(
+    
+    tam=15;
   }  
   //METODOS (funciones)
-  void dibujar() { 
+  void dibujarTexto (String texto, float posX, float posY) { 
     pushStyle();
-    textFont(miFuente); 
-    text("kjuigt", 60, 60); 
+    fill(255);
+   textAlign(CENTER,CENTER);
+    textFont(miFuente); //mentirita si funciona, ERA EL ORDEN (otra vez)
+     textSize(tam);
+    text(texto, posX, posY); 
     popStyle();
   }
 
-  void actualizar() {
-  }
 }

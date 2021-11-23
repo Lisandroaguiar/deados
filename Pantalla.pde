@@ -1,6 +1,7 @@
 //BORRAR C=0
 
 class Pantalla {
+  Texto texto;
   Boton boton;
   Juego juego;
   //VARIABLES (propiedades)
@@ -10,15 +11,18 @@ class Pantalla {
   int tamX, tamY;
   int numFotos = 18;
   String estado="inicio";
+    String [] textos;
   PImage[] fotos = new PImage [numFotos];
   //CONSTRUCTOR ("setup" de mi clase)
   Pantalla(float posX_, float posY_) {
     boton=new Boton();
     juego= new Juego();
+    texto= new Texto();
     posX = posX_;
     posY = posY_;
     tamX = 300; ///////////////////////Ver!
     tamY = 300;
+    textos = loadStrings("textosAventura.txt"); //SE CARGA ACA??
     m=millis();
     mov=0;
     for (int i = 0; i < fotos.length; i++) {
@@ -39,13 +43,17 @@ class Pantalla {
       boton.botonInicio();
       boton.botonCreditos(100, 200, 300, 50);
       println(estado);
+     
     }
 
     if ( estado=="boliche" ) {
       image(fotos[0], 100, 40, 300, 300);
       boton.botonContinuar(150, 450, 200, 25);
       println(estado);
-    }
+      for(int i=0; i<3; i++){
+   texto.dibujarTexto(textos[i],250,360+(i)*30);  }
+  }
+    
 
     if ( estado=="sustancia" ) {
       image(fotos[1], 100, 40, 300, 300);

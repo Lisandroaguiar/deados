@@ -4,14 +4,15 @@ class Boton {
   float posX, posY;
   float tamX, tamY;
   color rell1, rell2, rell3;
-  // PFont miFuenteBoton;
+  PFont miFuenteBoton;
   PFont miFuenteTemporal;
   String estado;
+  
   boolean botonPresionado=false;
   int contador;
   //CONSTRUCTOR ("setup" de mi clase)
   Boton() {
-    //miFuenteBoton=loadFont("miFuenteBoton.vlw");
+   miFuenteBoton=loadFont("miFuenteBoton.vlw");
     miFuenteTemporal = loadFont("SegoePrint-Bold-15.vlw");
     contador = 0;
   }
@@ -34,7 +35,11 @@ class Boton {
 
     rect(100, 100, 300, 50, 45);    
     fill(255, 0, 0);
-    textFont(miFuenteTemporal);
+    textAlign(CENTER,CENTER);
+     textFont(miFuenteBoton);
+    textSize(15);
+    
+   
     text("Inicio", 100, 100);
     popStyle();
   }
@@ -55,7 +60,8 @@ class Boton {
 
     rect(150, 450, 200, 25, 45);
     fill(255, 0, 0);
-    textFont(miFuenteTemporal);
+    
+    textFont(miFuenteBoton);
     text(textoB, 150, 450);
     popStyle();
   }
