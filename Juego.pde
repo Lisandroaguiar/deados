@@ -26,7 +26,7 @@ class Juego {
   }
   //METODOS (funciones)
 
-  void dibujarJuego() { 
+  void dibujarJuego(Pantalla p) { 
     //Escenario
     fondo.dibujar();
     //Obstaculos
@@ -42,7 +42,7 @@ class Juego {
 
     enemigo.dibujar();
     //Barra
-    progreso.dibujarBarra();
+    progreso.dibujarBarra(p);
   }
   void actualizarJuego() {
     String getE=progreso.getEstado(); 

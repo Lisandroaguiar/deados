@@ -9,7 +9,7 @@ class Progreso {
   Progreso() {
     estado="uno";
   }
-  void dibujarBarra() {
+  void dibujarBarra(Pantalla p) {
 
     //logica de estados ---ESTADO 1
     if ( estado.equals("uno") ) {
@@ -31,7 +31,11 @@ class Progreso {
     if ( estado.equals("dos") ) {
       if ( millis() > marcaDeTiempo+tiempo ) {  
         estado = "tres";
-      }
+        //en este instante deberia decirle a la aventura(pantalla) que cambie de estado)--- porque es el cuando (aca aparecen los parametros)
+      p.estado = "inicio"; //aca deberia pasar al estado siguiente al videojuego
+      //la mala manera porque asumo que esas palabras son instancias concretas. Si reutilizo la clase para otra cosa, todo falla(? 
+     // aventura.pantalla.juego.progreso.estado="final";
+    }
       float t = map( millis(), marcaDeTiempo, marcaDeTiempo+tiempo, 0, 400);  //tamaño del cuadrado rojo
       fill( 255, 0, 0 );
       rect( 50, 0, t, 10 );

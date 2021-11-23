@@ -1,5 +1,5 @@
 //BORRAR C=0
-
+//Hace un metodo que cambie el estado (cambiar a pantalla siguiente del vJ. Pasar por parametros clase entera para poder ejecutarlo 
 class Pantalla {
   Boton boton;
   Juego juego;
@@ -28,7 +28,7 @@ class Pantalla {
   //METODOS (funciones)
 
   ////////////////Consultar tamaño primera imagen(no es 300,300 , es width y height)
-  void dibujar() {
+  void dibujar(Pantalla p) {
     background(0);
 
     if (estado=="inicio") {
@@ -120,7 +120,7 @@ class Pantalla {
       boton.botonContinuar(150, 450, 200, 25);
     }   
     if ( estado=="minijuego" ) {
-      juego.dibujarJuego(); 
+      juego.dibujarJuego(p); 
       juego.actualizarJuego();
       juego.mover();
       juego.reiniciar();
