@@ -63,7 +63,7 @@ class Jugador {
       obstaculo.reciclarTacho();
     }
   }
-  void colisionEnemigo(Enemigo enemigo, Progreso progreso, Pantalla aux2) {
+  void colisionEnemigo(Enemigo enemigo, Progreso progreso) {
     float xEnemigo = enemigo.getX();
     float yEnemigo = enemigo.getY();
     float dColision = dist(xEnemigo, yEnemigo, posX, posY);

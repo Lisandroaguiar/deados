@@ -68,7 +68,7 @@ class Juego {
         jugador.colisionObstaculosMov(lata[a]);
       }
       jugador.colisionTacho(tacho);
-      jugador.colisionEnemigo(enemigo, progreso, pantalla);//CAMBIAR ACA
+      jugador.colisionEnemigo(enemigo, progreso);//CAMBIAR ACA
     }
   }
   void mover() { 

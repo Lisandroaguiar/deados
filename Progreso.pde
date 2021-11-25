@@ -45,7 +45,7 @@ class Progreso {
       text("Lograste escapar\n ¡GANASTE!", width/2, height/2);
       text("Apreta 'r' para reiniciar", width/2, 350); //Opción a reiniciar temporal
       popStyle();
-    } else if (estado=="cuatro") {//CAMBIAR ACA // PROBLEMA ACAAAA
+    } else if (estado=="cuatro") {
       background(0);
       pushStyle();
       textAlign(CENTER);
