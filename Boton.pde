@@ -18,14 +18,14 @@ class Boton {
   }
   //METODOS (funciones)
 
-  void botonInicio() {
+  void botonInicio(Pantalla aux) {
     pushStyle();
 
     if (mouseX > 100 && mouseX < 100 +300 && mouseY > 100 && mouseY < 100 + 50 ) {
       fill(245, 190, 247);
       if (mousePressed) {
         botonPresionado=true;
-        pantalla.actualizar();
+        aux.actualizar();
         fill(230, 133, 232);
       }
     } else {
@@ -43,14 +43,14 @@ class Boton {
     text("Inicio", 100, 100);
     popStyle();
   }
-  void botonCustom(String textoB) {
+  void botonCustom(String textoB,Pantalla aux) {
     pushStyle();
 
     if (mouseX > 150 && mouseX < 150 +200 && mouseY > 450 && mouseY < 450 + 25 ) {
       fill(245, 190, 247);
       if (mousePressed) {
         botonPresionado=true;
-        pantalla.actualizar();
+        aux.actualizar();
         fill(230, 133, 232);
       }
     } else {
@@ -65,13 +65,13 @@ class Boton {
     text(textoB, 150, 450);
     popStyle();
   }
-  void botonContinuar(float posX, float posY, float tamX, float tamY) {  
+  void botonContinuar(float posX, float posY, float tamX, float tamY,Pantalla aux) {  
     pushStyle();
 
     if (mouseX > posX && mouseX < posX +tamX && mouseY > posY && mouseY < posY + tamY ) {
       fill(245, 190, 247);
       if (mousePressed) {
-        pantalla.actualizar();
+        aux.actualizar();
         botonPresionado=true;
         fill(230, 133, 232);
       }
@@ -89,13 +89,13 @@ class Boton {
   }
 
 
-  void botonCreditos(float posX, float posY, float tamX, float tamY) {  
+  void botonCreditos(float posX, float posY, float tamX, float tamY,Pantalla aux) {  
     pushStyle();
 
     if (mouseX > posX && mouseX < posX +tamX && mouseY > posY && mouseY < posY + tamY ) {
       fill(245, 190, 247);
       if (mousePressed) {
-        pantalla.actualizar();
+        aux.actualizar();
         botonPresionado=true;
         fill(230, 133, 232);
       }
@@ -112,14 +112,14 @@ class Boton {
   }
 
 
-  void botonDoble(String textoB1, String textoB2, float posX, float posY, float posX2, float posY2, float tamX, float tamY) {  
+  void botonDoble(String textoB1, String textoB2, float posX, float posY, float posX2, float posY2, float tamX, float tamY,Pantalla aux) {  
     pushStyle();
 
     if (mouseX > posX && mouseX < posX +tamX && mouseY > posY && mouseY < posY + tamY ) {
       fill(245, 190, 247);
       contador=0;
       if (mousePressed) {
-        pantalla.actualizar();
+        aux.actualizar();
         contador++;
         fill(230, 133, 232);
       }
@@ -133,7 +133,7 @@ class Boton {
       fill(0);
       contador=0;
       if (mousePressed) {
-        pantalla.actualizar();
+        aux.actualizar();
         contador--;
         fill(230, 133, 232);
       }

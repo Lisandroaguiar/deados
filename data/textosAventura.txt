@@ -1,10 +1,10 @@
   La noche llego a su fin, es momento de salir del boliche, estas solo
   y no estas en tu mejor estado, encima perdiste a tus amigos
+  ¿podras llegar bien a tu casa?
   Encontraste una sustancia misteriosa, ¿que vas a hacer con ella?
   Bueno, encontraste la salida
-  Oh no...llueve...¿quien lo diria?
-  ¿podras llegar bien a tu casa?
   en tu billetera hay 0 pesos...peor seria que llueva ¿no?
+  Oh no...llueve...¿quien lo diria?
   pero viene un taxi y por la vereda una banda de gente sospechosa
   A salvo...estas en el taxi...¡pero no tenes un peso!
   Solamente queda una cosa por hacer
@@ -13,9 +13,7 @@
   Bueno...si vos decis, ¿cruzas o seguis en la tuya?
   Miras para atras y...¡te empezaron a correr!
   Te robaron y encima se te rien...un poco te lo mereces pichon
-  PENSA RAPIDO, ¿IZQUIERDA O DERECHA?
-  COMO VAS A ELEGIR LA DERECHA, ES UN CALLEJON SIN SALIDA
-  Te roban y te alejas mientras se rien
+   Te roban y te alejas mientras se rien
   ...DONDE TE DIJERON QUE IBAN A ESTAR
   Doblas y ves a tus amigos...esperandote
   COMO VAS A TOMAR ALGO DEL PISO, ¿ESTAS LOCO?
