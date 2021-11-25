@@ -161,7 +161,7 @@ class Pantalla {
       image(fotos[12], 100, 40, 300, 300);
       boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
-       texto.dibujarTexto(textos[16],250,360);
+       texto.dibujarTexto(textos[15],250,360);
     }  
     if (estado=="amigos") {
       image(fotos[14], 100, 40, 300, 300);
