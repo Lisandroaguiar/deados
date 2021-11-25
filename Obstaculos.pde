@@ -44,7 +44,7 @@ class Obstaculos {
 
   void reciclar() {
     this.posX = random(width/10, 350);
-    this.posY = -10;
+    this.posY = 10;
   }
   void reciclarTacho() {
     this.posX = 300;

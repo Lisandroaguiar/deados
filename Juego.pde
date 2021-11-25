@@ -77,7 +77,8 @@ class Juego {
   }
   void reiniciar(Pantalla a) {//CAMBIAR ACA  //PREGUNTARLE AL PROFE
     String getE=a.getE(); 
-    if (getE=="callejon" || getE=="amigos") {
+    if (getE=="callejon" || getE=="amigos")
+    {
       jugador.reiniciarJugador();
       enemigo.reiniciarEnemigo();
       progreso.reiniciarEstado();

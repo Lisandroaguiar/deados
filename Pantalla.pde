@@ -11,7 +11,7 @@ class Pantalla {
   int tamX, tamY;
   int numFotos = 18;
   String estado="inicio";
-  //String [] textos;
+    String [] textos;
   PImage[] fotos = new PImage [numFotos];
   //CONSTRUCTOR ("setup" de mi clase)
   Pantalla(float posX_, float posY_) {
@@ -22,7 +22,7 @@ class Pantalla {
     posY = posY_;
     tamX = 300; ///////////////////////Ver!
     tamY = 300;
-    //textos = loadStrings("textosAventura.txt"); //SE CARGA ACA??
+    textos = loadStrings("textosAventura.txt"); //SE CARGA ACA??
     m=millis();
     mov=0;
     for (int i = 0; i < fotos.length; i++) {
@@ -32,7 +32,7 @@ class Pantalla {
   //METODOS (funciones)
 
   ////////////////Consultar tamaño primera imagen(no es 300,300 , es width y height)
-  void dibujar(Pantalla aux1) {
+  void dibujar(Pantalla aux) {
     background(0);
 
     if (estado=="inicio") {
@@ -40,171 +40,135 @@ class Pantalla {
       fotos[16].resize(tamX, tamY);
       tamX=width;
       tamY=height;
-      boton.botonInicio(aux1);
-      boton.botonCreditos(100, 200, 300, 50, aux1);
+      boton.botonInicio(aux);
+      boton.botonCreditos(100, 200, 300, 50,aux);
       println(estado);
+     
     }
 
     if ( estado=="boliche" ) {
       image(fotos[0], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
+      boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
-    }
-
+      for(int i=0; i<3; i++){
+   texto.dibujarTexto(textos[i],250,360+(i)*30);  }
+  }
+    
 
     if ( estado=="sustancia" ) {
       image(fotos[1], 100, 40, 300, 300);
-      boton.botonDoble("Tomar", "No tomar", 260, 450, 40, 450, 200, 25, aux1);
+      boton.botonDoble("Tomar", "No tomar", 260, 450, 40, 450, 200, 25,aux);
       println(estado);
-      
-        texto.dibujarTexto(3, 250, 360);
+      texto.dibujarTexto(textos[3],250,360);
       
     } 
 
     if ( estado=="ambulancia" ) {
-      image(fotos[2], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
+      image(fotos[3], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+      texto.dibujarTexto(textos[16],250,360);
+      
     }  
     if (estado=="ambulancia2") {
-      image(fotos[3], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
+      image(fotos[2], 100, 40, 300, 300);
+      boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+      texto.dibujarTexto(textos[17],250,360+30);
+      texto.dibujarTexto(textos[18],250,360);
+      texto.dibujarTexto(textos[19],250,360+60);
     }  
     if (estado=="ganaste") { 
       image(fotos[17], 100, 40, 300, 300);
-      boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25, aux1);
+      boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25,aux);
       println(estado);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+       texto.dibujarTexto(textos[22],250,360);
     }  
     if ( estado=="creditos" ) {
       image(fotos[16], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
+      boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
     }  
     if ( estado=="perdiste" ) {
       image(fotos[15], 100, 40, 300, 300);
-      boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25, aux1);
-
+      boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25,aux);
+ texto.dibujarTexto(textos[23],250,360);
       println(estado);
-      
-        texto.dibujarTexto(23, 250, 360);
-      
     }  
     if ( estado=="caminar" ) {
       image(fotos[13], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
+      boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
-     
-        texto.dibujarTexto(4, 250, 360);
-        texto.dibujarTexto(5, 250, 360+30);
-      
+       texto.dibujarTexto(textos[4],250,360);
+        texto.dibujarTexto(textos[5],250,360+30);
     }  
     if ( estado=="grupotaxi" ) {
       image(fotos[4], 100, 40, 300, 300);
-      boton.botonDoble("Parar el taxi", "Encarar el grupo", 260, 450, 40, 450, 200, 25, aux1);
+      boton.botonDoble("Parar el taxi", "Encarar el grupo", 260, 450, 40, 450, 200, 25,aux);
       println(estado);
-      
-        texto.dibujarTexto(6, 250, 360);
-        texto.dibujarTexto(7, 250, 360+30);
-      
-     
-    }   
+   texto.dibujarTexto(textos[6],250,360); 
+   texto.dibujarTexto(textos[7],250,360+30);
+  }   
+    
     if ( estado=="grupo" ) {
       image(fotos[5], 100, 40, 300, 300);
-      boton.botonDoble("Seguir", "Cruzar", 260, 450, 40, 450, 200, 25, aux1);
+      boton.botonDoble("Seguir", "Cruzar", 260, 450, 40, 450, 200, 25,aux);
       println(estado);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+       texto.dibujarTexto(textos[12],250,360);
     }  
     if ( estado=="taxi" ) {
       image(fotos[6], 100, 40, 300, 300);
       println(estado);
-      
-        texto.dibujarTexto(8, 250, 360);
-        texto.dibujarTexto(9, 250, 360+30);
-      
-
-      boton.botonCustom("Pagadios", aux1);
+ texto.dibujarTexto(textos[8],250,360);
+ texto.dibujarTexto(textos[9],250,360+30);
+      boton.botonCustom("Pagadios",aux);
     }    
     if ( estado=="preso" ) {
       image(fotos[7], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
-     
-        texto.dibujarTexto(10, 250, 360);
-        
-      
-    }    
+      boton.botonContinuar(150, 450, 200, 25,aux);
+   texto.dibujarTexto(textos[10],250,360);  
+  }    
+    
     if ( estado=="preso2" ) {
       image(fotos[8], 100, 40, 300, 300);
       println(estado);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
-     
-        
-        texto.dibujarTexto(11, 250, 360);
-      
-    }  
+      boton.botonContinuar(150, 450, 200, 25,aux);
+   texto.dibujarTexto(textos[11],250,360);  
+  } 
+    
     if ( estado=="correr" ) {
       image(fotos[10], 100, 40, 300, 300);
       println(estado);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+      boton.botonContinuar(150, 450, 200, 25,aux);
+       texto.dibujarTexto(textos[13],250,360);
     }  
     if (estado=="robado") {
       image(fotos[11], 100, 40, 300, 300);
       println(estado);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+      boton.botonContinuar(150, 450, 200, 25,aux);
+       texto.dibujarTexto(textos[14],250,360);
     }   
     if ( estado=="minijuego" ) {
       juego.dibujarJuego(); 
       juego.actualizarJuego();
       juego.mover();
 
-      juego.ganaste(aux1);
-      juego.perdiste(aux1);
-      juego.reiniciar(aux1);
+      juego.ganaste(aux);
+     juego.perdiste(aux);
+      juego.reiniciar(aux);
     }    
     if (estado=="callejon") {
       image(fotos[12], 100, 40, 300, 300);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
+      boton.botonContinuar(150, 450, 200, 25,aux);
       println(estado);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+       texto.dibujarTexto(textos[16],250,360);
     }  
     if (estado=="amigos") {
       image(fotos[14], 100, 40, 300, 300);
       println(estado);
-      boton.botonContinuar(150, 450, 200, 25, aux1);
-      for (int i=0; i<3; i++) {
-        //texto.dibujarTexto(textos[i], 250, 360+(i)*30);
-        texto.dibujarTexto(i, 250, 360+(i)*30);
-      }
+      boton.botonContinuar(150, 450, 200, 25,aux);
+       texto.dibujarTexto(textos[20],250,360);
+        texto.dibujarTexto(textos[21],250,360+30);
     }
     if ( estado=="creditos" ) {
       background(200);
@@ -217,7 +181,7 @@ class Pantalla {
       text("Patente pendiente", 250, 1100-mov);
       mov+=5;
       if (m>500) {
-        boton.botonInicio(aux1);
+        boton.botonInicio(aux);
       }
     }
     println("m: ", m);
