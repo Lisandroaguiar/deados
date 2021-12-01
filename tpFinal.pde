@@ -1,5 +1,3 @@
-
-
 import processing.sound.*;
 Pantalla pantalla;
 void setup() {

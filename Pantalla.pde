@@ -280,6 +280,7 @@ class Pantalla {
     if ( estado=="grupotaxi" && C==1 && m>7) {
       m=0; 
       sonidoTaxi.play();
+      sonidoTaxi.loop();
       estado="taxi";
     }
     if ( estado=="grupo"  && C==1 && m>7) { 
@@ -294,6 +295,8 @@ class Pantalla {
       m=0; 
       A=false;
       estado="preso";
+      sonidoTaxi.stop();
+      sonidoFondo.loop();
     }    
     if ( estado=="preso"&& A==true &&m>7 ) { 
       m=0; 
