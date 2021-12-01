@@ -281,6 +281,7 @@ class Pantalla {
       m=0; 
       sonidoTaxi.play();
       sonidoTaxi.loop();
+      sonidoFondo.stop();
       estado="taxi";
     }
     if ( estado=="grupo"  && C==1 && m>7) { 
