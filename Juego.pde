@@ -11,10 +11,10 @@ class Juego {
   Enemigo enemigo;
   Progreso progreso;
   //CONSTRUCTOR ("setup" de mi programa)
-  Juego() {
+  Juego(PApplet c) {
     progreso=new Progreso();
     tacho = new Obstaculos(random(width), -200);
-    jugador = new Jugador();
+    jugador = new Jugador(c);
     enemigo = new Enemigo ();
     fondo = new Escenario(0, -500, width, height*2);
     for (int i = 0; i < lata.length; i++) {

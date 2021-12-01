@@ -3,6 +3,7 @@
 class Pantalla { 
   SoundFile sonidoFondo;
   SoundFile sonidoCorre;
+  
   Texto texto;
   Boton boton;
   Juego juego;
@@ -16,33 +17,36 @@ class Pantalla {
   String [] textos;
   PImage[] fotos = new PImage [numFotos];
   float  posYC;
+
   //CONSTRUCTOR ("setup" de mi clase)
-  Pantalla(float posX_, float posY_,PApplet p) {
+  Pantalla(float posX_, float posY_, PApplet p) {
     boton=new Boton();
-    juego= new Juego();
+    juego= new Juego(p);
     texto= new Texto();
     posX = posX_;
+   
     posY = posY_;
     tamX = 300; ///////////////////////Ver!
     tamY = 300;
     sonidoFondo = new SoundFile(p, "sonidoFondo.mp3");
     sonidoCorre = new SoundFile(p, "corre.wav");
-    sonidoFondo.amp(0.1);
-    sonidoCorre.amp(0.3);
+    
+    sonidoFondo.amp(0.05);
+    sonidoCorre.amp(0.05);
     sonidoFondo.loop();
     textos = loadStrings("textosAventura.txt"); //SE CARGA ACA??
     m=millis();
     mov=0;
-    posYC=500;
+      posYC=500;
     for (int i = 0; i < fotos.length; i++) {
       fotos[i] = loadImage("fondos/foto"+ nf(i, 2) + ".jpg");
     }
- 
-}  
-  
+  }  
+
   //METODOS (funciones)
 
   ////////////////Consultar tamaño primera imagen(no es 300,300 , es width y height)
+  
   void dibujar(Pantalla aux) {
     background(0);
 
@@ -77,7 +81,6 @@ class Pantalla {
       boton.botonContinuar(150, 450, 200, 25, 15, aux);
       println(estado);
       texto.dibujarTexto(textos[16], 250, 360);
-       
     }  
     if (estado=="ambulancia2") {
       image(fotos[2], 100, 40, 300, 300);
@@ -92,7 +95,6 @@ class Pantalla {
       boton.botonDoble("Inicio", "Créditos", 40, 450, 260, 450, 200, 25, 15, aux);
       println(estado);
       texto.dibujarTexto(textos[22], 250, 360);
-     
     }  
 
     if ( estado=="perdiste" ) {
@@ -158,7 +160,7 @@ class Pantalla {
       juego.dibujarJuego(); 
       juego.actualizarJuego();
       juego.mover();
-      
+
 
 
       juego.ganaste(aux);
@@ -189,7 +191,7 @@ class Pantalla {
       text("Programacion:Lisandro Aguiar", 250, posYC+300-mov);
       text("Programacion:Tatiana Segundo", 250, posYC+400-mov);
       text("Patente pendiente", 250, posYC+600-mov);
-      
+
       mov+=3;
       m++;
       if (m>150) {
@@ -305,41 +307,43 @@ class Pantalla {
       m=0; 
       A=false;
       estado="minijuego";
-      sonidoFondo.stop();
+       sonidoFondo.stop();
       sonidoCorre.loop();
     }  
     if (estado=="robado"&& A==true && m>5) { 
       m=0; 
       A=false;
       estado="perdiste";
-
     }   
     if ( estado=="minijuego" && C==1 && m>5) {
       m=0; 
       estado="callejon";
-      sonidoCorre.stop();
-      sonidoFondo.play();
+      
     }    
     if ( estado=="minijuego" && C==-1 && m>5) {
       m=0; 
       estado="amigos";
-      sonidoCorre.stop();
-      sonidoFondo.play();
+     
     }   
     if (estado=="callejon"&& A==true && m>5) { 
       m=0; 
       A=false;
       estado="perdiste";
+      sonidoCorre.stop();
+      sonidoFondo.loop();
     }  
     if (estado=="amigos"&& A==true && m>5) { 
       m=0; 
+      sonidoCorre.stop();
+sonidoFondo.loop();
       A=false;
       estado="ganaste";
+      
     }
     if ( estado=="ganaste" && C==1 && m>5) {
       m=0;
-
-      estado="inicio";
+      
+estado="inicio";
     } 
     if ( estado=="ganaste" && C==-1 && m>5) {
       m=0;

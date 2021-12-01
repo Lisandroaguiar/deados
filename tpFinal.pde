@@ -8,6 +8,7 @@ void setup() {
 }
 void draw() {
   pantalla.dibujar(pantalla);
+ 
 }
 
 void mouseClicked() {

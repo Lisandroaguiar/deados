@@ -5,9 +5,14 @@ class Jugador {
   float velocidad;
   int numFrames = 10;
   PImage [] jugador = new PImage [numFrames];
-
+SoundFile sonidoBotella;
+SoundFile sonidoTacho;
   //CONSTRUCTOR ("setup" de mi programa)
-  Jugador() {
+  Jugador(PApplet a) {
+    sonidoBotella = new SoundFile(a, "botella.wav");
+    sonidoTacho = new SoundFile(a, "tacho.wav");
+     sonidoBotella.amp(0.05);
+     sonidoTacho.amp(0.05);
     posX = width/2;
     posY = height/2;
     velocidad = 1.75;
@@ -48,9 +53,11 @@ class Jugador {
     float dColision= dist(xObstaculo, yObstaculo, posX, posY);
     if (dColision<hitBox/5) { 
       posY+=25; 
+      sonidoBotella.play();
       println("colisionObstaculosMoviles");
       obstaculo.reciclar();
     }
+   
   }
   void colisionTacho(Obstaculos obstaculo) {
     float xObstaculo= obstaculo.getX();
@@ -59,6 +66,7 @@ class Jugador {
     float dColision= dist(xObstaculo, yObstaculo, posX, posY);
     if (dColision<hitBox/4) { 
       posY+=25; 
+      sonidoTacho.play();
       println("colisionTacho");
       obstaculo.reciclarTacho();
     }
