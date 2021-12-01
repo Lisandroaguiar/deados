@@ -3,7 +3,7 @@
 class Pantalla { 
   SoundFile sonidoFondo;
   SoundFile sonidoCorre;
-  
+  SoundFile sonidoTaxi;
   Texto texto;
   Boton boton;
   Juego juego;
@@ -24,20 +24,21 @@ class Pantalla {
     juego= new Juego(p);
     texto= new Texto();
     posX = posX_;
-   
+
     posY = posY_;
     tamX = 300; ///////////////////////Ver!
     tamY = 300;
-    sonidoFondo = new SoundFile(p, "sonidoFondo.mp3");
+    sonidoFondo = new SoundFile(p, "sonidoFondo.wav");
     sonidoCorre = new SoundFile(p, "corre.wav");
-    
+    sonidoTaxi = new SoundFile(p, "taxi.wav");
     sonidoFondo.amp(0.05);
-    sonidoCorre.amp(0.05);
+    sonidoCorre.amp(0.03);
+    sonidoTaxi.amp(0.03);
     sonidoFondo.loop();
     textos = loadStrings("textosAventura.txt"); //SE CARGA ACA??
     m=millis();
     mov=0;
-      posYC=500;
+    posYC=500;
     for (int i = 0; i < fotos.length; i++) {
       fotos[i] = loadImage("fondos/foto"+ nf(i, 2) + ".jpg");
     }
@@ -46,7 +47,7 @@ class Pantalla {
   //METODOS (funciones)
 
   ////////////////Consultar tamaño primera imagen(no es 300,300 , es width y height)
-  
+
   void dibujar(Pantalla aux) {
     background(0);
 
@@ -214,138 +215,136 @@ class Pantalla {
 
     println(C);
 
-    if ( estado=="inicio"  && C==1 && m>5) { 
+    if ( estado=="inicio"  && C==1 && m>7) { 
       m=0;
       estado="boliche";
     } 
-    if ( estado=="inicio"  && C==-1 && m>5) {
+    if ( estado=="inicio"  && C==-1 && m>7) {
       m=0; 
       estado="creditos";
       mov=0;
     }
-    if ( estado=="boliche" && A==true && m>5) { 
+    if ( estado=="boliche" && A==true && m>7) { 
       m=0;   
       A=false;
       estado="sustancia";
     }
 
-    if ( estado=="sustancia" && C==1 && m>5) {
+    if ( estado=="sustancia" && C==1 && m>7) {
       m=0;
 
       estado="ambulancia";
     } 
-    if ( estado=="sustancia" && C==-1 && m>5) {
+    if ( estado=="sustancia" && C==-1 && m>7) {
       m=0;
 
       estado="caminar";
     } 
 
-    if ( estado=="ambulancia" && A==true && m>5) { 
+    if ( estado=="ambulancia" && A==true && m>7) { 
       m=0; 
       A=false;
       estado="ambulancia2";
     }  
-    if (estado=="ambulancia2"&& A==true && m>5) { 
+    if (estado=="ambulancia2"&& A==true && m>7) { 
 
       m=0; 
       A=false;
       estado="ganaste";
     }  
-    if ( estado=="creditos" && A==true && m>5) { 
+    if ( estado=="creditos" && A==true && m>7) { 
       m=0; 
       mov=0;
       A=false;
       estado="inicio";
     }  
-    if ( estado=="perdiste" && C==1 && m>5) {
+    if ( estado=="perdiste" && C==1 && m>7) {
       m=0;
 
       estado="inicio";
     } 
-    if ( estado=="perdiste" && C==-1 && m>5) {
+    if ( estado=="perdiste" && C==-1 && m>7) {
       m=0;
 
       estado="creditos";
     } 
-    if ( estado=="caminar" && A==true && m>5) { 
+    if ( estado=="caminar" && A==true && m>7) { 
       m=0; 
       A=false;
       estado="grupotaxi";
     }  
-    if ( estado=="grupotaxi" && C==-1 && m>5) {
+    if ( estado=="grupotaxi" && C==-1 && m>7) {
       m=0; 
       estado="grupo";
     }
-    if ( estado=="grupotaxi" && C==1 && m>5) {
+    if ( estado=="grupotaxi" && C==1 && m>7) {
       m=0; 
+      sonidoTaxi.play();
       estado="taxi";
     }
-    if ( estado=="grupo"  && C==1 && m>5) { 
+    if ( estado=="grupo"  && C==1 && m>7) { 
       m=0;
       estado="robado";
     } 
-    if ( estado=="grupo"  && C==-1 && m>5) {
+    if ( estado=="grupo"  && C==-1 && m>7) {
       m=0; 
       estado="correr";
     }
-    if ( estado=="taxi"&& A==true && m>5 ) { 
+    if ( estado=="taxi"&& A==true && m>7 ) { 
       m=0; 
       A=false;
       estado="preso";
     }    
-    if ( estado=="preso"&& A==true &&m>5 ) { 
+    if ( estado=="preso"&& A==true &&m>7 ) { 
       m=0; 
       A=false;
       estado="preso2";
     }    
-    if ( estado=="preso2"&& A==true && m>5 ) {
+    if ( estado=="preso2"&& A==true && m>7 ) {
       m=0;  
       A=false;
       estado="perdiste";
     }  
-    if ( estado=="correr" && A==true && m>5) { 
+    if ( estado=="correr" && A==true && m>7) { 
       m=0; 
       A=false;
       estado="minijuego";
-       sonidoFondo.stop();
+      sonidoFondo.stop();
       sonidoCorre.loop();
     }  
-    if (estado=="robado"&& A==true && m>5) { 
+    if (estado=="robado"&& A==true && m>7) { 
       m=0; 
       A=false;
       estado="perdiste";
     }   
-    if ( estado=="minijuego" && C==1 && m>5) {
+    if ( estado=="minijuego" && C==1 && m>7) {
       m=0; 
       estado="callejon";
-      
     }    
-    if ( estado=="minijuego" && C==-1 && m>5) {
+    if ( estado=="minijuego" && C==-1 && m>7) {
       m=0; 
       estado="amigos";
-     
     }   
-    if (estado=="callejon"&& A==true && m>5) { 
+    if (estado=="callejon"&& A==true && m>7) { 
       m=0; 
       A=false;
       estado="perdiste";
       sonidoCorre.stop();
       sonidoFondo.loop();
     }  
-    if (estado=="amigos"&& A==true && m>5) { 
+    if (estado=="amigos"&& A==true && m>7) { 
       m=0; 
       sonidoCorre.stop();
-sonidoFondo.loop();
+      sonidoFondo.loop();
       A=false;
       estado="ganaste";
-      
     }
-    if ( estado=="ganaste" && C==1 && m>5) {
+    if ( estado=="ganaste" && C==1 && m>7) {
       m=0;
-      
-estado="inicio";
+
+      estado="inicio";
     } 
-    if ( estado=="ganaste" && C==-1 && m>5) {
+    if ( estado=="ganaste" && C==-1 && m>7) {
       m=0;
 
       estado="creditos";

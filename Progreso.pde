@@ -4,11 +4,11 @@ class Progreso {
   String estado;
   int x=150;
   int y=150;
- PFont miFuente;
+  PFont miFuente;
   //Constructor
   Progreso() {
     estado="uno";
-     miFuente=loadFont("miFuente.vlw");
+    miFuente=loadFont("miFuente.vlw");
   }
   void dibujarBarra() {
 

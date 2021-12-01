@@ -62,10 +62,10 @@ class Juego {
       enemigo.seguirJugador(jugador);
 
       for (int i=0; i<botella.length; i++) {
-        jugador.colisionObstaculosMov(botella[i]);
+        jugador.colisionBotella(botella[i]);
       }
       for (int a=0; a<lata.length; a++) {
-        jugador.colisionObstaculosMov(lata[a]);
+        jugador.colisionLata(lata[a]);
       }
       jugador.colisionTacho(tacho);
       jugador.colisionEnemigo(enemigo, progreso);//CAMBIAR ACA

@@ -7,7 +7,7 @@ class Boton {
   PFont miFuenteBoton;
   PFont miFuenteTemporal;
   String estado;
- 
+
   boolean botonPresionado=false;
   int contador;
   //CONSTRUCTOR ("setup" de mi clase)
@@ -15,7 +15,7 @@ class Boton {
     miFuenteBoton=loadFont("miFuenteBoton.vlw");
     miFuenteTemporal = loadFont("SegoePrint-Bold-15.vlw");
     contador = 0;
-    textAlign(CENTER,CENTER);
+    textAlign(CENTER, CENTER);
   }
   //METODOS (funciones)
 
@@ -43,7 +43,7 @@ class Boton {
     text(textoB, 150+200/2, 450+25/2);
     popStyle();
   }
-  void botonContinuar(float posX, float posY, float tamX, float tamY,float tamT, Pantalla aux) {  
+  void botonContinuar(float posX, float posY, float tamX, float tamY, float tamT, Pantalla aux) {  
     pushStyle();
 
     if (mouseX > posX && mouseX < posX +tamX && mouseY > posY && mouseY < posY + tamY ) {
@@ -59,7 +59,7 @@ class Boton {
     }
 
     rect(posX, posY, tamX, tamY, 45);
-    
+
     fill(255, 0, 0);
     textFont(miFuenteBoton);
     textSize(tamT);
@@ -71,7 +71,7 @@ class Boton {
 
 
 
-  void botonDoble(String textoB1, String textoB2, float posX, float posY, float posX2, float posY2, float tamX, float tamY,float tamT, Pantalla aux) {  
+  void botonDoble(String textoB1, String textoB2, float posX, float posY, float posX2, float posY2, float tamX, float tamY, float tamT, Pantalla aux) {  
     pushStyle();
 
     if (mouseX > posX && mouseX < posX +tamX && mouseY > posY && mouseY < posY + tamY ) {
