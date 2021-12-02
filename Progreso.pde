@@ -44,8 +44,7 @@ class Progreso {
       fill( 255, 0, 0 );
       rect( 50, 0, t, 10 );
       println("2");
-    } 
-
+    }
   }
 
   String getEstado() { 

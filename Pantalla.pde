@@ -192,7 +192,7 @@ class Pantalla {
       pushStyle();
       background(200);
       textSize(20);
-      fill(255,0,0);
+      fill(255, 0, 0);
       textAlign(CENTER, CENTER);
       text("Guión: Lisandro Aguiar", 250, posYC-mov);
       text("Montaje: Lisandro Aguiar", 250, posYC+100-mov);
